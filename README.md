@@ -1,7 +1,7 @@
 # NarutoOnlineBot
 
 ## About
-Fergus is a [Discord](https://discordapp.com/) bot for [Naruto Online](http://naruto.oasgames.com/en/).
+NarutoOnlineBot is a [Discord](https://discordapp.com/) bot for [Naruto Online](http://naruto.oasgames.com/en/).
 
 ## Commands
 Prefix: !
@@ -17,9 +17,10 @@ Prefix: !
 
 ## Special Thanks
 Special thanks to the following individuals for their contributions to the project during its early development:
+- Miku
 - GG
 - Yamato
 - Tori
 
 ## License
-[GPL-3.0](https://raw.githubusercontent.com/Johj/fergus/master/LICENSE)
+[GPL-3.0](https://raw.githubusercontent.com/AisuRyuuko/NarutoOnlineBot/master/LICENSE)
