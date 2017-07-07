@@ -8,6 +8,7 @@ Prefix: !
 
 - help
 - ninja
+- image
 - list1
 - list2
 
