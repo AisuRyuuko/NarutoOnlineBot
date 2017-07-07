@@ -20,7 +20,7 @@ client.on("message", (message) => {
 
   // Help Command
   if (message.content.startsWith(config.prefix + "help")) {
-    message.channel.send("Commands available: \n!ninja <name> | !list1 | !list2")
+    message.channel.send("Commands available: \n!ninja <name> | !image <name> | !list1 | !list2")
   }
 
   if (message.content.startsWith(config.prefix + "ninja")) {
@@ -57,6 +57,24 @@ client.on("message", (message) => {
     }
   }
 
+  if (message.content.startsWith(config.prefix + "image")) {
+    try {
+      let args = message.content.split(" ").slice(1);
+      let ninjaName = args[0];
+      ninObj = findNinja(ninjaName)
+      message.channel.send({
+          "embed": {
+            title: ninObj.szName,
+            description: "Stat Growth: \n[Life|Atk|Def|Nin|Res]\n" + ninObj.szBasicAttr,
+            "image": {
+              "url": "https://github.com/AisuRyuuko/NarutoOnlineBot/blob/master/Images/" + ninObj.iNid + ".png?raw=true",
+            }
+          }
+        });
+    } catch (e) {
+      console.log(e)
+    }
+  }
 
   // List Ninjas Command
   if (message.content.startsWith(config.prefix + "list1")) {
@@ -113,4 +131,13 @@ function findSkill(skillID) {
       return data[i];
     }
   }
+}
+
+function imageExist(image_url){
+  var http = new XMLHttpRequest();
+
+  http.open('HEAD', image_url, false);
+  http.send();
+
+  return http.status !=404;
 }
