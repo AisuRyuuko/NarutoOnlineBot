@@ -28,6 +28,13 @@ client.on("message", (message) => {
       let args = message.content.split(" ").slice(1);
       let ninjaName = args[0];
       ninObj = findNinja(ninjaName)
+
+      if (typeof ninObj == 'undefined')
+      {
+        message.channel.send("Sorry, I do not have information on " + ninjaName + ".\nPlease use !list1 or !list2 for a list of supported ninjas.")
+        return;
+      }
+
       mysteryObj = findSkill(ninObj.iOySkill)
       standardObj = findSkill(ninObj.iPgSkill)
       skill1Obj = findSkill(ninObj.iBdSkill1)
@@ -62,6 +69,13 @@ client.on("message", (message) => {
       let args = message.content.split(" ").slice(1);
       let ninjaName = args[0];
       ninObj = findNinja(ninjaName)
+
+      if (typeof ninObj == 'undefined')
+      {
+        message.channel.send("Sorry, I do not have information on " + ninjaName + ".\nThis command currently only supports EN ninjas.\nPlease use !list1 or !list2 for a list of supported ninjas.")
+        return;
+      }
+
       message.channel.send({
           "embed": {
             title: ninObj.szName,
