@@ -20,7 +20,7 @@ client.on("message", (message) => {
 
   // Help Command
   if (message.content.startsWith(config.prefix + "help")) {
-    message.channel.send("Commands available: \n!ninja <name> | !image <name> | !list1 | !list2")
+    message.channel.send("Commands available: \n!ninja <name> | !image <name> | !list1 | !list2 | !stats")
   }
 
   if (message.content.startsWith(config.prefix + "ninja")) {
@@ -85,6 +85,29 @@ client.on("message", (message) => {
             }
           }
         });
+    } catch (e) {
+      console.log(e)
+    }
+  }
+
+  if (message.content.startsWith(config.prefix + "stats")) {
+    try {
+      let args = message.content.split(" ").slice(1);
+      let ninjaName = args[0];
+
+      ninObj = findNinja(ninjaName)
+
+      if (typeof ninObj == 'undefined')
+      {
+        message.channel.send("Sorry, I do not have information on " + ninjaName + ".\nPlease use !list1 or !list2 for a list of supported ninjas.")
+        return;
+      }
+
+      const embed = new Discord.RichEmbed()
+        .setTitle("**__" + ninObj.szName + "__**")
+        .setDescription("[" + ninObj.szAttr + "] " + ninObj.szOrg + "\nStat Growth: \n[Life|Atk|Def|Nin|Res]\n" + ninObj.szBasicAttr)
+        .setColor(3447003)
+        message.channel.send({embed});
     } catch (e) {
       console.log(e)
     }
