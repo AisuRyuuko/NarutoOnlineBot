@@ -35,11 +35,11 @@ client.on("message", (message) => {
         return;
       }
 
-      mysteryObj = findSkill(ninObj.iOySkill)
-      standardObj = findSkill(ninObj.iPgSkill)
-      skill1Obj = findSkill(ninObj.iBdSkill1)
-      skill2Obj = findSkill(ninObj.iBdSkill2)
-      skill3Obj = findSkill(ninObj.iBdSkill3)
+      mysteryObj = findSkill(ninObj.iOySkill, ninObj.iNid)
+      standardObj = findSkill(ninObj.iPgSkill, ninObj.iNid)
+      skill1Obj = findSkill(ninObj.iBdSkill1, ninObj.iNid)
+      skill2Obj = findSkill(ninObj.iBdSkill2, ninObj.iNid)
+      skill3Obj = findSkill(ninObj.iBdSkill3, ninObj.iNid)
 
       let isPrompt = "";
       if (mysteryObj.iMoment) {
@@ -161,10 +161,10 @@ function findNinja(name) {
   }
 }
 
-function findSkill(skillID) {
+function findSkill(skillID, ninID) {
   var data = cnninjas.data.skills;
   for (var i = 0; i < data.length; i++) {
-    if (data[i].iSkillId.toLowerCase() == skillID.toLowerCase()) {
+    if (data[i].iSkillId.toLowerCase() == skillID.toLowerCase() && data[i].iNid == ninID) {
       return data[i];
     }
   }
