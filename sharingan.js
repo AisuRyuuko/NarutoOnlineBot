@@ -81,7 +81,7 @@ client.on("message", (message) => {
             title: ninObj.szName,
             description: "Stat Growth: \n[Life|Atk|Def|Nin|Res]\n" + ninObj.szBasicAttr,
             "image": {
-              "url": "https://github.com/AisuRyuuko/NarutoOnlineBot/blob/master/Images/" + ninObj.iNid + ".png?raw=true",
+              "url": "https://github.com/AisuRyuuko/NarutoOnlineBot/blob/master/Images/" + ninObj.iNid + "_image.png?raw=true",
             }
           }
         });
