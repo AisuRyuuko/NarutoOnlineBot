@@ -20,7 +20,7 @@ client.on("message", (message) => {
 
   // Help Command
   if (message.content.startsWith(config.prefix + "help")) {
-    message.channel.send("Commands available: \n!ninja <name> | !image <name> | !list1 | !list2 | !stats")
+    message.channel.send("Commands available: \n!ninja <name> | !image <name> | !list1 | !list2 | !stats <name>")
   }
 
   if (message.content.startsWith(config.prefix + "ninja")) {
