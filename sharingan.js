@@ -29,6 +29,12 @@ client.on("message", (message) => {
       let ninjaName = args[0];
       ninObj = findNinja(ninjaName)
 
+      if (ninjaName.toLowerCase() == 'zaze')
+      {
+        message.channel.send("#Zazed AYYYYYYYEEEEEEEEEEEEEEEEEEEEEEEE")
+        return;
+      }
+
       if (typeof ninObj == 'undefined')
       {
         message.channel.send("Sorry, I do not have information on " + ninjaName + ".\nPlease use !list1 or !list2 for a list of supported ninjas.")
@@ -52,6 +58,7 @@ client.on("message", (message) => {
         .setTitle("**__" + ninObj.szName + "__**")
         .setDescription("[" + ninObj.szAttr + "] " + ninObj.szOrg + "\nStat Growth: \n[Life|Atk|Def|Nin|Res]\n" + ninObj.szBasicAttr)
         .setColor(3447003)
+        .setThumbnail("https://github.com/AisuRyuuko/NarutoOnlineBot/blob/master/Images/" + ninObj.iNid + ".png?raw=true")
         .addField(mysteryTitle, mysteryDesc)
         .addField(standardObj.szTitle + "[" + standardObj.szHurtType + standardObj.szHurtType2 + "]",standardObj.szDesc)
         .addField(skill1Obj.szTitle + "[" + skill1Obj.szHurtType + skill1Obj.szHurtType2 + "]",skill1Obj.szDesc)
