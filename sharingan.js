@@ -20,7 +20,7 @@ client.on("message", (message) => {
 
   // Help Command
   if (message.content.startsWith(config.prefix + "help")) {
-    message.channel.send("Commands available: \n!ninja <name> | !image <name> | !list1 | !list2 | !stats <name>!filter <tag>")
+    message.channel.send("Commands available: \n!ninja <name> | !image <name> | !list1 | !list2 | !stats <name> | !filter <tag>")
   }
 
   if (message.content.startsWith(config.prefix + "ninja")) {
@@ -165,6 +165,40 @@ client.on("message", (message) => {
         filterTag += args[i]
       }
 
+      var tagArray = [];
+      // Get all tags in array
+      for (var key in cnninjas.data.ninjas) {
+        if (cnninjas.data.ninjas.hasOwnProperty(key)) {
+          tagArray.push(cnninjas.data.ninjas[key].szOrg);
+        }
+      }
+
+      var resultTag = [];
+      for (var i = 0; i < tagArray.length; i++) {
+        resultTag = resultTag.concat(tagArray[i].split(","));
+      }
+
+      tagArray = resultTag.filter(function (el, i, arr) { return arr.indexOf(el) ===i;});
+      tagArray.sort();
+
+      let tagList = ""
+      for (var i = 0; i < tagArray.length; i++) {
+        if (!tagArray[i] == "") {
+          tagList += "[" + tagArray[i].trim() +  "] "
+        }
+      }
+
+      let tagFound = "false"
+      for (var i = 0; i < tagArray.length; i++) {
+        if (tagArray[i].toLowerCase().replace(" ", "") == filterTag.toLowerCase().replace(" ", "")) {
+          tagFound = "true"
+        }
+      }
+      if (tagFound == "false") {
+        message.channel.send("Sorry, that is not a valid option. Please try one of the following: " + tagList)
+        return;
+      }
+
       var ninjaArray = [];
       // Find all ninjas with tag; add to array
       for (var key in cnninjas.data.ninjas) {
@@ -208,13 +242,4 @@ function findSkill(skillID, ninID) {
       return data[i];
     }
   }
-}
-
-function imageExist(image_url){
-  var http = new XMLHttpRequest();
-
-  http.open('HEAD', image_url, false);
-  http.send();
-
-  return http.status !=404;
 }
