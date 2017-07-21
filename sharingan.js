@@ -20,7 +20,7 @@ client.on("message", (message) => {
 
   // Help Command
   if (message.content.startsWith(config.prefix + "help")) {
-    message.channel.send("Commands available: \n!ninja <name> | !image <name> | !list1 | !list2 | !stats <name>")
+    message.channel.send("Commands available: \n!ninja <name> | !image <name> | !list1 | !list2 | !stats <name>!filter <tag>")
   }
 
   if (message.content.startsWith(config.prefix + "ninja")) {
@@ -156,6 +156,39 @@ client.on("message", (message) => {
     //console.log(cnninjaArray.length)
     message.channel.send("List of CN ninjas: " + cnninjaList)
   }
+
+  if (message.content.startsWith(config.prefix + "filter")) {
+    try {
+      let args = message.content.split(" ").slice(1);
+      var filterTag = ""
+      for (var i = 0; i < args.length; i++) {
+        filterTag += args[i]
+      }
+
+      var ninjaArray = [];
+      // Find all ninjas with tag; add to array
+      for (var key in cnninjas.data.ninjas) {
+        if (cnninjas.data.ninjas.hasOwnProperty(key)) {
+          var tags = cnninjas.data.ninjas[key].szOrg.split(",")
+          for (var i = 0; i < tags.length; i++) {
+            if (tags[i].toLowerCase().replace(" ", "") == filterTag.toLowerCase()) {
+              ninjaArray.push(cnninjas.data.ninjas[key].szNickname);
+            }
+          }
+        }
+      }
+      /// Show ninjas with tag.
+      ninjaArray.sort();
+      var ninjaList = "";
+      for (var i = 0; i < ninjaArray.length; i++) {
+        ninjaList += "[" + ninjaArray[i] + "] "
+      }
+      message.channel.send("List of ninjas with " + filterTag + ": " + ninjaList)
+    } catch (e) {
+      console.log(e)
+    }
+  }
+
 
 });
 
