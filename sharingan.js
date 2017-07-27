@@ -132,7 +132,7 @@ client.on("message", (message) => {
     /// Show 1st half of ninjas.
     cnninjaArray.sort();
     var cnninjaList = "";
-    for (var i = 0; i < cnninjaArray.length/2; i++) {
+    for (var i = 0; i < Math.floor(cnninjaArray.length/2); i++) {
       cnninjaList += "[" + cnninjaArray[i] + "] "
     }
     //console.log(cnninjaArray.length)
@@ -150,7 +150,7 @@ client.on("message", (message) => {
     /// Show 2nd half of ninjas.
     cnninjaArray.sort();
     var cnninjaList = "";
-    for (var i = cnninjaArray.length/2; i < cnninjaArray.length; i++) {
+    for (var i = Math.floor(cnninjaArray.length/2); i < cnninjaArray.length; i++) {
       cnninjaList += "[" + cnninjaArray[i] + "] "
     }
     //console.log(cnninjaArray.length)
