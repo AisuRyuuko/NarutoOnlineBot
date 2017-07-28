@@ -64,6 +64,7 @@ client.on("message", (message) => {
         .addField(skill1Obj.szTitle + "[" + skill1Obj.szHurtType + skill1Obj.szHurtType2 + "]",skill1Obj.szDesc)
         .addField(skill2Obj.szTitle + "[" + skill2Obj.szHurtType + skill2Obj.szHurtType2 + "]",skill2Obj.szDesc)
         .addField(skill3Obj.szTitle + "[" + skill3Obj.szHurtType + skill3Obj.szHurtType2 + "]",skill3Obj.szDesc)
+        .setFooter("Skills are based off CN v4.0 Ninjas. Original data pulled from http://bang.qq.com/tool/huoying/mnq.htm.")
         message.channel.send({embed});
 
     } catch (e) {
