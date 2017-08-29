@@ -3,6 +3,8 @@
 ## About
 NarutoOnlineBot is a [Discord](https://discordapp.com/) bot for [Naruto Online](http://naruto.oasgames.com/en/).
 
+Please report bugs to me on Discord at: AisuRyuuko#9721
+
 ## Commands
 Prefix: !
 
