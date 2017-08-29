@@ -31,12 +31,15 @@ Special thanks to the following individuals for their contributions to the proje
 Follow the steps listed on [this](https://anidiotsguide.gitbooks.io/discord-js-bot-guide/getting-started/the-long-version.html) page down to getting your bot token.
 - This will show you how to create the bot
 - Join the bot to your server
+
 After following the instructions and getting your token,
 - you will need to download the files from this repository
 - open up the config.json file
-- insert your bot token in the appropriate location
-- save config.json file
+- insert your bot token in the appropriate location within that file
+- save the changes you made to config.json file
+
 In order to have the bot running, you will need to install [node.js](https://nodejs.org/en/). 
 After installing node.js, navigate to the place where you downloaded the repository via commandline then run the following command:
 - node sharingan.js
+
 If you did everything correctly, you should see the bot respond that it is ready.
