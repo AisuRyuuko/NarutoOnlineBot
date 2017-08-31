@@ -1,8 +1,8 @@
 const Discord = require("discord.js");
 const client = new Discord.Client();
 const config = require("./config.json");
-//const cnninjas = require("./cn_sim_response.json"); // Swap with en_sim_response.json to use english NO1.0 data
-const cnninjas = require("./de_sim_response.json"); // Swap with en_sim_response.json to use english NO1.0 data
+const cnninjas = require("./cn_sim_response.json"); // Swap with en_sim_response.json to use english NO1.0 data
+//const cnninjas = require("./de_sim_response.json"); // Swap with en_sim_response.json to use english NO1.0 data
 
 client.login(config.token);
 
