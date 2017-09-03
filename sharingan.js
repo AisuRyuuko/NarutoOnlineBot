@@ -55,19 +55,34 @@ client.on("message", (message) => {
       let mysteryTitle = mysteryObj.szTitle + "[" + mysteryObj.szHurtType + mysteryObj.szHurtType2 + "]" + isPrompt;
       let mysteryDesc = "CD - " + mysteryObj.iChillTime + " BCD - " + mysteryObj.iChill + " Chakra: " + mysteryObj.iChakraUse + "\n" + mysteryObj.szDesc;
 
-      const embed = new Discord.RichEmbed()
-        .setTitle("**__" + ninObj.szName + "__**")
-        .setDescription("[" + ninObj.szAttr + "] " + ninObj.szOrg + "\nStat Growth: \n[Life|Atk|Def|Nin|Res]\n" + ninObj.szBasicAttr)
-        .setColor(3447003)
-        .setThumbnail("https://github.com/AisuRyuuko/NarutoOnlineBot/blob/master/Images/" + ninObj.iNid + ".png?raw=true")
-        .addField(mysteryTitle, mysteryDesc)
-        .addField(standardObj.szTitle + "[" + standardObj.szHurtType + standardObj.szHurtType2 + "]",standardObj.szDesc)
-        .addField(skill1Obj.szTitle + "[" + skill1Obj.szHurtType + skill1Obj.szHurtType2 + "]",skill1Obj.szDesc)
-        .addField(skill2Obj.szTitle + "[" + skill2Obj.szHurtType + skill2Obj.szHurtType2 + "]",skill2Obj.szDesc)
-        .addField(skill3Obj.szTitle + "[" + skill3Obj.szHurtType + skill3Obj.szHurtType2 + "]",skill3Obj.szDesc)
-        //.setFooter("Skills are based off CN v4.0 Ninjas. Original data pulled from http://bang.qq.com/tool/huoying/mnq.htm.")
-        .setFooter("Skills are based off data pulled from http://test.naruto.rednubes.de/lang/2")
-        message.channel.send({embed});
+      if (skill3Obj == "_blank") {
+        const embed = new Discord.RichEmbed()
+          .setTitle("**__" + ninObj.szName + "__**")
+          .setDescription("[" + ninObj.szAttr + "] " + ninObj.szOrg + "\nStat Growth: \n[Life|Atk|Def|Nin|Res]\n" + ninObj.szBasicAttr)
+          .setColor(3447003)
+          .setThumbnail("https://github.com/AisuRyuuko/NarutoOnlineBot/blob/master/Images/" + ninObj.iNid + ".png?raw=true")
+          .addField(mysteryTitle, mysteryDesc)
+          .addField(standardObj.szTitle + "[" + standardObj.szHurtType + standardObj.szHurtType2 + "]",standardObj.szDesc)
+          .addField(skill1Obj.szTitle + "[" + skill1Obj.szHurtType + skill1Obj.szHurtType2 + "]",skill1Obj.szDesc)
+          .addField(skill2Obj.szTitle + "[" + skill2Obj.szHurtType + skill2Obj.szHurtType2 + "]",skill2Obj.szDesc)
+          //.setFooter("Skills are based off CN v4.0 Ninjas. Original data pulled from http://bang.qq.com/tool/huoying/mnq.htm.")
+          .setFooter("Skills are based off data pulled from http://test.naruto.rednubes.de/lang/2")
+          message.channel.send({embed});
+      }else {
+        const embed = new Discord.RichEmbed()
+          .setTitle("**__" + ninObj.szName + "__**")
+          .setDescription("[" + ninObj.szAttr + "] " + ninObj.szOrg + "\nStat Growth: \n[Life|Atk|Def|Nin|Res]\n" + ninObj.szBasicAttr)
+          .setColor(3447003)
+          .setThumbnail("https://github.com/AisuRyuuko/NarutoOnlineBot/blob/master/Images/" + ninObj.iNid + ".png?raw=true")
+          .addField(mysteryTitle, mysteryDesc)
+          .addField(standardObj.szTitle + "[" + standardObj.szHurtType + standardObj.szHurtType2 + "]",standardObj.szDesc)
+          .addField(skill1Obj.szTitle + "[" + skill1Obj.szHurtType + skill1Obj.szHurtType2 + "]",skill1Obj.szDesc)
+          .addField(skill2Obj.szTitle + "[" + skill2Obj.szHurtType + skill2Obj.szHurtType2 + "]",skill2Obj.szDesc)
+          .addField(skill3Obj.szTitle + "[" + skill3Obj.szHurtType + skill3Obj.szHurtType2 + "]",skill3Obj.szDesc)
+          //.setFooter("Skills are based off CN v4.0 Ninjas. Original data pulled from http://bang.qq.com/tool/huoying/mnq.htm.")
+          .setFooter("Skills are based off data pulled from http://test.naruto.rednubes.de/lang/2")
+          message.channel.send({embed});
+      }
 
     } catch (e) {
       console.log(e)
@@ -241,7 +256,9 @@ function findNinja(name) {
 function findSkill(skillID, ninID) {
   var data = cnninjas.data.skills;
   for (var i = 0; i < data.length; i++) {
-    if (data[i].iSkillId.toLowerCase() == skillID.toLowerCase() && data[i].iNid == ninID) {
+    if (skillID.toLowerCase() == '0') {
+      return "_blank";
+    }else if (data[i].iSkillId.toLowerCase() == skillID.toLowerCase() && data[i].iNid == ninID) {
       return data[i];
     }
   }
